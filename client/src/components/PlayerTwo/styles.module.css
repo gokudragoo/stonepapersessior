@@ -1,0 +1,166 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.player_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+}
+
+.player_name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1E90FF;
+}
+
+.score_display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.score_label {
+  font-size: 1rem;
+  color: #666;
+}
+
+.score_value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4682B4;
+}
+
+.star_container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.active_star {
+  color: #FFD700;
+}
+
+.choice_display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.choice_icon {
+  font-size: 5rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.choice_label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4682B4;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.opponent_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+}
+
+.opponent_card {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #F0F8FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #87CEEB;
+}
+
+.opponent_icon {
+  font-size: 3rem;
+}
+
+.opponent_text {
+  color: #666;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.room_id {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: #F0F8FF;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #87CEEB;
+  min-width: 250px;
+}
+
+.room_id_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room_id_label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #4682B4;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.copy_button {
+  background: #1E90FF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.copy_button:hover {
+  background: #4682B4;
+}
+
+.copy_button.copied {
+  background: #00AA00;
+}
+
+.room_id_value {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #333;
+  word-break: break-all;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+}

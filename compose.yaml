@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - "5173:5173" # Web app
+    - "8080:8080" # faucet
+    - "9001:9001" # shard proxy
+    - "13001:13001" # shard
+    volumes:
+    - .:/build
+    environment:
+    - LINERA_FAUCET_URL=http://localhost:8080
+    restart: unless-stopped

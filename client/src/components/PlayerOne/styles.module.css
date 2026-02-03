@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.player_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+}
+
+.player_name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1E90FF;
+}
+
+.score_display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.score_label {
+  font-size: 1rem;
+  color: #666;
+}
+
+.score_value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4682B4;
+}
+
+.star_container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.active_star {
+  color: #FFD700;
+}
+
+.choice_display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.choice_icon {
+  font-size: 5rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.choice_label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4682B4;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

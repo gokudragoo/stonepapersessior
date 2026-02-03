@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+client/node_modules/
+**/node_modules/
+
+# Build outputs
+client/build/
+client/.env
+client/.env.local
+client/.env.production
+stone-paper-scissors/target/
+**/target/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.production.local
+
+# Docker
+.dockerignore
+
+# Linera
+.linera/
+~/.config/linera/
+
+# Temporary files
+*.tmp
+*.temp
