@@ -3,7 +3,46 @@
 set -eu
 
 echo ">>> Starting Linera network..."
+
+# Clear any existing Linera network storage so we don't get
+# "storage is already initialized" when re-running (e.g. after docker compose down/up).
+# Storage can persist on the host via the .:/build volume mount, in the container's home,
+# or in /tmp (e.g. .tmp* dirs from linera net helper).
+for base in /build "$HOME"; do
+  if [ -d "$base/.linera" ]; then
+    echo ">>> Clearing existing Linera network storage ($base/.linera)..."
+    rm -rf "$base/.linera"
+  fi
+  for d in "$base"/linera-*; do
+    if [ -d "$d" ]; then
+      echo ">>> Clearing existing Linera network storage ($d)..."
+      rm -rf "$d"
+    fi
+  done
+done
+# Clear /tmp Linera dirs (helper may use e.g. /tmp/.tmpXXXX)
+for tmpd in /tmp/.tmp* /tmp/linera*; do
+  if [ -d "$tmpd" ]; then
+    echo ">>> Clearing existing Linera temp storage ($tmpd)..."
+    rm -rf "$tmpd"
+  fi
+done
 eval "$(linera net helper)"
+# Clear the path the helper just set (it may point to existing storage from a previous run)
+for var in LINERA_NETWORK LINERA_NETWORK_DIR LINERA_STORAGE LINERA_NETWORK_STORAGE LINERA_NET; do
+  if [ -n "${!var:-}" ]; then
+    path="${!var}"
+    path="${path#rocksdb:}"  # strip rocksdb: prefix if present
+    if [ -f "$path" ]; then
+      path="$(dirname "$path")"
+    fi
+    if [ -d "$path" ]; then
+      echo ">>> Clearing helper storage path ($path)..."
+      rm -rf "$path"
+    fi
+  fi
+done 2>/dev/null || true
+
 linera_spawn linera net up --with-faucet
 
 # Wait for faucet to be ready

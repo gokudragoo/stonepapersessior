@@ -308,6 +308,21 @@ All state uses `RegisterView` which means it's stored on-chain:
 
 ## Troubleshooting
 
+### Storage is already initialized
+
+**Error**: `Error: storage is already initialized` when running `linera net up` (e.g. inside Docker).
+
+**Cause**: This is **not** from "chunk files." Linera’s local network state from a previous run is still present. On Docker, that state is **inside the container’s filesystem** (e.g. under `/root` or the helper’s temp dir), **not** in your project folder—so you won’t see a `.linera` folder on your host. Because of `restart: unless-stopped`, the same container is reused and keeps that old state.
+
+**Fix**: The startup script (`run.bash`) now **clears existing Linera network storage** before starting (under `/build` and in the container home), so you should no longer see this error. Just run:
+
+1. `docker compose down`
+2. `docker compose up --build`
+
+If you still see the error, remove any Linera data on the host and try again:
+- In the project root: `Remove-Item -Recurse -Force .linera` (PowerShell) or `rm -rf .linera` (bash)
+- Also remove any folder named `linera-*` in the project root if present
+
 ### WASM Closure Error
 
 **Error**: `closure invoked recursively or after being dropped`
